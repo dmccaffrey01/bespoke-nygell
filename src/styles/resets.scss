@@ -1,0 +1,57 @@
+// Box-sizing reset
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+  
+// Remove default body styles
+body {
+    margin: 0;
+    padding: 0;
+}
+  
+// Remove list styles (ul, ol)
+ul, ol {
+    list-style: none;
+}
+  
+// Reset anchor styles
+a {
+    text-decoration: none;
+    color: inherit;
+}
+  
+// Reset heading margins
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+}
+  
+// Reset button styles
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+  
+// Reset images
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+  
+// Reset table styles
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+// Reset form elements
+input, textarea, select {
+    font: inherit;
+    border: none;
+    outline: none;
+}

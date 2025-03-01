@@ -1,0 +1,26 @@
+// Fonts Import
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root {
+    // Colors
+    --primary-color: oklch(0.89 0.05 85);
+    --darker-primary-color: oklch(0.85 0.05 85);
+    --secondary-color: oklch(0.22 0.05 85);
+    --tertiary-color: oklch(0.35 0.13 265);
+    --white-color: oklch(1 0 0);
+    --black-color: oklch(0 0 0);
+
+    // Font Families
+    --body-ff: 'Roboto', sans-serif;
+    --heading-ff: 'Roboto', sans-serif;
+
+    // Base Size
+    --base-size: 16px;
+}
+
+$primary-color: var(--primary-color);
+$darker-primary-color: var(--darker-primary-color);
+$secondary-color: var(--secondary-color);
+$tertiary-color: var(--tertiary-color);
+$white-color: var(--white-color);
+$black-color: var(--black-color);

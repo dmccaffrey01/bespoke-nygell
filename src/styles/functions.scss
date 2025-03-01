@@ -1,0 +1,14 @@
+@use "sass:string";
+
+@function abbreviation($string) {
+    $abreviation: "";
+    @if string.index($string: $string, $substring: "-") {
+        $split: string.split($string, "-");
+        @each $word in $split {
+            $abreviation: string.insert($abreviation, string.slice($word, 1, 1), string.length($abreviation) + 1);
+        }
+    } @else {
+        $abreviation: string.slice($string, 1, 1);
+    }
+    @return $abreviation;
+}
