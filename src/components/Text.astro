@@ -1,0 +1,29 @@
+---
+import '../styles/global.scss';
+
+interface Props {
+    size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+    color?: "primary" | "secondary" | "tertiary" | "black" | "white";
+    type?: "heading" | "subheading" | "normal";
+}
+
+const { size = "md", color = "secondary", type = "normal" } = Astro.props;
+
+const classText = `text text-${size} text-${color}`;
+---
+
+{ type === "heading" 
+? 
+    <h2 class={`${classText}`}>
+        <slot />
+    </h2>
+: type === "subheading"
+?
+    <h3 class={`${classText}`}>
+        <slot />
+    </h3>
+:
+    <p class={`${classText}`}>
+        <slot />
+    </p>
+}

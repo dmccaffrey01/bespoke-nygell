@@ -1,0 +1,30 @@
+---
+interface Props {
+    size?: "xs" | "sm" | "md" | "lg";
+    bgColor?: "primary" | "secondary" | "tertiary" | "black" | "white";
+    fill?: "filled" | "outline";
+    color?: "primary" | "secondary" | "tertiary" | "black" | "white";
+    type?: "link" | "button" | "div";
+    url?: string;
+}
+
+const {  size = "md", bgColor = "tertiary", fill, color = "primary",  type = "div", url} = Astro.props;
+
+const classText = `btn btn-${size} btn-${bgColor} btn-${fill} text-${color} text-${size}`;
+---
+
+{ type === "link" 
+? 
+    <a class={`${classText}`} href={url}>
+        <slot />
+    </a>
+: type === "button"
+?
+    <button class={`${classText}`}>
+        <slot />
+    </button>
+:
+    <div class={`${classText}`}>
+        <slot />
+    </div>
+}

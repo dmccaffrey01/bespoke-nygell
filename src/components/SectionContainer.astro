@@ -1,0 +1,29 @@
+---
+import '../styles/components/container.scss';
+
+interface Props {
+    direction?: "row" | "col";
+}
+
+const { direction = "row" } = Astro.props;
+---
+{ direction === "row" 
+? 
+    <div class="flex flex-row justify-between">
+        <slot />
+    </div>
+:
+    <div class="flex flex-col">
+        <slot />
+    </div>
+}
+
+<style lang="scss">
+    .flex-col {
+        gap: 2.5rem;
+    }
+
+    .flex {
+        width: 1440px;
+    }
+</style>

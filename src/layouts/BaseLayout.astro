@@ -1,0 +1,40 @@
+---
+import '../styles/global.scss';
+import Header from '../components/Header.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Logo from '../components/Logo.astro';
+import Nav from '../components/Nav.astro';
+import Link from '../components/Link.astro';
+import Button from '../components/Button.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <Header>
+        <SectionContainer>
+            <Logo></Logo>
+            <Nav>
+                <Link color="secondary" size="md" url="#">
+                    Home
+                </Link>
+                <Link color="secondary" size="md" url="#">
+                    Services
+                </Link>
+                <Link color="secondary" size="md" url="#">
+                    Contact
+                </Link>
+                <Button size="md" bgColor="tertiary" fill="filled" color="white" type="link" url="#">Get Free Quote</Button>
+            </Nav>
+        </SectionContainer>
+    </Header>
+    <main>
+        <slot />
+    </main>
+</body>
+</html>

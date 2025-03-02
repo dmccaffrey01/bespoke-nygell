@@ -1,0 +1,48 @@
+@use '../variables.scss' as *;
+
+.text-xs {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.text-sm {
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+}
+
+.text-md {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+}
+
+.text-lg {
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+
+.text-xl {
+    font-size: 3rem;
+    line-height: 3.75rem;
+    font-family: $ff-heading;
+}
+
+.text-2xl {
+    font-size: 4rem;
+    line-height: 5rem;
+    font-family: $ff-heading;
+}
+
+$text-colors: (
+    "text-primary": $color-primary,
+    "text-primary-darker": $color-primary-darker,
+    "text-secondary": $color-secondary,
+    "text-tertiary": $color-tertiary,
+    "text-white": $color-white,
+    "text-black": $color-black
+);
+
+@each $key, $value in $text-colors {
+    .#{$key} {
+        color: $value;
+    }
+}

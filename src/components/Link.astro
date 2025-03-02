@@ -1,0 +1,17 @@
+---
+import '../styles/components/text.scss';
+
+interface Props {
+    color?: "primary" | "secondary" | "tertiary" | "black" | "white";
+    size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+    url: string;
+}
+
+const { color = "secondary", size = "md", url } = Astro.props;
+
+const classText = `text text-${size} text-${color}`;
+---
+
+<a class={`${classText}`} href={url}>
+    <slot />
+</a>

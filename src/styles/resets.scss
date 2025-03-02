@@ -1,3 +1,5 @@
+@use './variables.scss' as *;
+
 // Box-sizing reset
 *, *::before, *::after {
     box-sizing: border-box;
@@ -9,6 +11,10 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: $color-primary;
+    color: $color-secondary;
+    font-size: $fs-base;
+    font-family: $ff-body;
 }
   
 // Remove list styles (ul, ol)
