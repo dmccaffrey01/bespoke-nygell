@@ -1,5 +1,6 @@
 // Fonts Import
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
 
 :root {
     // Colors
@@ -11,21 +12,13 @@
     --color-black: oklch(0 0 0);
 
     // Font Families
-    --ff-body: 'Roboto', sans-serif;
-    --ff-heading: 'Roboto', sans-serif;
+    --ff-body: 'Montserrat', sans-serif;
+    --ff-heading: 'EB Garamond', sans-serif;
 
     // Base Font Size
     --fs-base: 16px;
+
+    // Widths & Heights
+    --height-header: 120px;
+    --width-sc: 1440px;
 }
-
-$color-primary: var(--color-primary);
-$color-primary-darker: var(--color-primary-darker);
-$color-secondary: var(--color-secondary);
-$color-tertiary: var(--color-tertiary);
-$color-white: var(--color-white);
-$color-black: var(--color-black);
-
-$ff-body: var(--ff-body);
-$ff-heading: var(--ff-heading);
-
-$fs-base: var(--fs-base);

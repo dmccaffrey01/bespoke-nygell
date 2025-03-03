@@ -1,6 +1,4 @@
 ---
-import '../styles/components/text.scss';
-
 interface Props {
     color?: "primary" | "secondary" | "tertiary" | "black" | "white";
     size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
@@ -9,9 +7,59 @@ interface Props {
 
 const { color = "secondary", size = "md", url } = Astro.props;
 
-const classText = `text text-${size} text-${color}`;
+const classText = `link link-${size} link-${color}`;
 ---
 
 <a class={`${classText}`} href={url}>
     <slot />
 </a>
+
+<style lang="scss">
+    .link-xs {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    .link-sm {
+        font-size: 1.25rem;
+        line-height: 1.875rem;
+    }
+
+    .link-md {
+        font-size: 1.5rem;
+        line-height: 2.25rem;
+    }
+
+    .link-lg {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+
+    .link-xl {
+        font-size: 3rem;
+        line-height: 3.75rem;
+        font-family: var(--ff-heading);
+    }
+
+    .link-2xl {
+        font-size: 4rem;
+        line-height: 5rem;
+        font-family: var(--ff-heading);
+    }
+
+    $link-colors: (
+        "link-primary": var(--color-primary),
+        "link-primary-darker": var(--color-primary-darker),
+        "link-secondary": var(--color-secondary),
+        "link-tertiary": var(--color-tertiary),
+        "link-white": var(--color-white),
+        "link-black": var(--color-black)
+    );
+
+    @each $key, $value in $link-colors {
+        .#{$key} {
+            color: $value;
+        }
+    }
+
+</style>

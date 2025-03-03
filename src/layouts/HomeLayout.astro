@@ -1,6 +1,26 @@
 ---
-
+import SectionContainer from "../components/SectionContainer.astro";
+import Section from "../components/Section.astro";
+import Container from "../components/Container.astro";
+import Text from "../components/Text.astro";
+import Button from "../components/Button.astro";
 ---
 
-<p>Home Page</p>
-
+<Section height="fill">
+    <SectionContainer direction="row" sectionFill="fill">
+        <Container direction="col" align="start" gap="lg">
+            <Text size="2xl" color="secondary">
+                Premium Floor Sanding <br>
+                By Trusted Experts
+            </Text>
+            <Text size="lg" color="secondary">
+                With unmatched quality, precision, and care, <br>
+                we restore the beauty of your wooden <br>
+                floors to perfection
+            </Text>
+            <Button size="lg" color="white" bgColor="tertiary" fill="filled">
+                Get Free Quote
+            </Button>
+        </Container>
+    </SectionContainer>
+</Section>

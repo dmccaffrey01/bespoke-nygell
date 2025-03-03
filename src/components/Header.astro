@@ -1,13 +1,17 @@
 ---
 ---
 
-<header class="flex flex-center">
+<header>
     <slot />
 </header>
 
 <style lang="scss">
     header {
-        height: 180px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: var(--height-header);
         width: 100%;
+        background-color: var(--color-secondary);
     }
 </style>

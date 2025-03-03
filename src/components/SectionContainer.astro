@@ -1,29 +1,31 @@
 ---
-import '../styles/components/container.scss';
-
 interface Props {
     direction?: "row" | "col";
+    sectionFill?: "fill" | "nofill";
 }
 
-const { direction = "row" } = Astro.props;
+const { direction = "row", sectionFill = "nofill" } = Astro.props;
 ---
-{ direction === "row" 
-? 
-    <div class="flex flex-row justify-between">
-        <slot />
-    </div>
-:
-    <div class="flex flex-col">
-        <slot />
-    </div>
-}
+<div class=`section-container ${direction} ${sectionFill}`>
+    <slot />
+</div>
 
 <style lang="scss">
-    .flex-col {
+    div {
+        width: var(--width-sc);
+        display: flex;
+    }
+    
+    .col {
+        flex-direction: column;
         gap: 2.5rem;
     }
 
-    .flex {
-        width: 1440px;
+    .row {
+        justify-content: space-between;
+    }
+
+    .fill {
+        margin-bottom: var(--height-header);
     }
 </style>
