@@ -1,0 +1,7 @@
+@for $i from 25 through 600 {
+    @if $i % 25 == 0 {
+        .gap-#{$i} {
+            gap: #{calc($i / 100)}rem;
+        }
+    }
+}

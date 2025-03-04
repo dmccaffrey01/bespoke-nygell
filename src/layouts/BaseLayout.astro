@@ -1,11 +1,7 @@
 ---
 import '../styles/global.scss';
-import Header from '../components/Header.astro';
-import SectionContainer from '../components/SectionContainer.astro';
-import Logo from '../components/Logo.astro';
-import Nav from '../components/Nav.astro';
-import Link from '../components/Link.astro';
-import Button from '../components/Button.astro';
+import Header from '../layouts/Header.astro';
+
 ---
 
 <!DOCTYPE html>
@@ -16,23 +12,7 @@ import Button from '../components/Button.astro';
     <title>Document</title>
 </head>
 <body>
-    <Header>
-        <SectionContainer>
-            <Logo></Logo>
-            <Nav>
-                <Link color="white" size="sm" url="#">
-                    Home
-                </Link>
-                <Link color="white" size="sm" url="#">
-                    Services
-                </Link>
-                <Link color="white" size="sm" url="#">
-                    Contact
-                </Link>
-                <Button size="sm" bgColor="tertiary" fill="filled" color="white" type="link" url="#">Get Free Quote</Button>
-            </Nav>
-        </SectionContainer>
-    </Header>
+    <Header></Header>
     <main>
         <slot />
     </main>

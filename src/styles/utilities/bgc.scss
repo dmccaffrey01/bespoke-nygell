@@ -1,0 +1,14 @@
+$bg-colors: (
+    "bg-primary": var(--color-primary),
+    "bg-primary-darker": var(--color-primary-darker),
+    "bg-secondary": var(--color-secondary),
+    "bg-tertiary": var(--color-tertiary),
+    "bg-white": var(--color-white),
+    "bg-black": var(--color-black)
+);
+
+@each $key, $value in $bg-colors {
+    .#{$key} {
+        background-color: $value;
+    }
+}

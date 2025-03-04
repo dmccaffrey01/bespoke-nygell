@@ -1,0 +1,135 @@
+---
+---
+
+<section class="flex flex-center height-md">
+    <div class="sc flex flex-row justify-between align-center">
+        <div class="flex flex-col align-start gap-150">
+            <h2 class="text text-secondary text-xl">
+                Clean, Efficient and Reliable <br>
+                Floor Sanding Service
+            </h2>
+            <p class="text text-secondary text-md">
+                With years of experience, we specialize in dust-free <br>
+                sanding, refinishing, and restoring hardwood floors <br>
+                to their original beauty. Our skilled team delivers <br>
+                high-quality, reliable, and affordable service, <br>
+                ensuring flawless results
+            </p>
+            <a href="#" class="btn btn-tertiary btn-sm btn-outline text-tertiary">View Our Services</a>
+        </div>
+
+        <div class="carousel-wrapper">
+            <div class="carousel-btn icon-container left faded">
+                <svg xmlns="http://www.w3.org/2000/svg" class="dark-text-2" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 0 1 1.414 0L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414" clip-rule="evenodd" />
+                </svg>
+                <span class="sr-only">Chevron Icon</span>
+            </div>
+            <div class="carousel">
+                
+                <div class="carousel-inner">
+                    <div class="carousel-item"></div>
+                </div>
+            </div>
+            <div class="carousel-btn icon-container right{% if draft_events_less_two %} faded{% endif %}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="dark-text-2" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 0 1 1.414 0L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414" clip-rule="evenodd" />
+                </svg>
+                <span class="sr-only">Chevron Icon</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        let carouselWrapper = document.querySelector(".carousel-wrapper");
+
+        if (carouselWrapper instanceof HTMLElement) {
+            let leftBtn = carouselWrapper.querySelector(".carousel-btn.left");
+            let rightBtn = carouselWrapper.querySelector(".carousel-btn.right");
+            let carouselInner = carouselWrapper.querySelector(".carousel-inner");
+
+            if (carouselInner instanceof HTMLElement) {
+                let carouselItems = carouselWrapper.querySelectorAll(".carousel-item");
+                let firstCarouselItem = carouselItems[0];
+                let computedStyleOfCI = window.getComputedStyle(firstCarouselItem);
+                let widthOfCI = computedStyleOfCI.width;
+                let widthStr = widthOfCI.split("px")[0];
+                let widthNum = Number(widthStr);
+
+                let totalTranslateX = widthNum;
+
+                let amountOfItems = carouselItems.length;
+
+                if (leftBtn instanceof HTMLElement && rightBtn instanceof HTMLElement) {
+                    leftBtn.addEventListener("click", () => {
+                        moveCarouselLeft(carouselWrapper, carouselInner, totalTranslateX, leftBtn, rightBtn);
+                    });
+                }
+
+                if (rightBtn instanceof HTMLElement && leftBtn instanceof HTMLElement) {
+                    rightBtn.addEventListener("click", () => {
+                        moveCarouselRight(carouselWrapper, carouselInner, totalTranslateX, amountOfItems, leftBtn, rightBtn);
+                    });
+                }
+            }
+        }
+    });
+
+    let moveCarouselLeft = (carouselWrapper: HTMLElement, carouselInner: HTMLElement, totalTranslateX: number, leftBtn: HTMLElement, rightBtn: HTMLElement) => {
+        let position = carouselWrapper.getAttribute("data-position");
+        let positionNum = Number(position);
+        
+        if (positionNum <= 1) {
+            return;
+        }
+
+        rightBtn.classList.remove("faded");
+
+        let computedStyleOfCIC = window.getComputedStyle(carouselInner);
+        let transformValue = computedStyleOfCIC.getPropertyValue('transform');
+        let matrixOfCIC = new DOMMatrixReadOnly(transformValue);
+        let translateXNumber = matrixOfCIC.m41;
+
+        let newTranslateXNumber = translateXNumber + totalTranslateX;
+
+        carouselInner.style.transform = `translate(${newTranslateXNumber}px, 0px)`;
+
+        let newPositon = positionNum - 1;
+        let newPositonStr = String(newPositon);
+        carouselWrapper.setAttribute("data-position", newPositonStr);
+
+        if (newPositon == 1) {
+            leftBtn.classList.add("faded");
+        }
+    }
+
+    let moveCarouselRight = (carouselWrapper: HTMLElement, carouselInner: HTMLElement, totalTranslateX: number, amountOfItems: number, leftBtn: HTMLElement, rightBtn: HTMLElement) => {
+        let position = carouselWrapper.getAttribute("data-position");
+        let positionNum = Number(position);
+
+        if (positionNum >= amountOfItems - 1) {
+            return;
+        }
+
+        leftBtn.classList.remove("faded");
+
+        let computedStyleOfCIC = window.getComputedStyle(carouselInner);
+        let transformValue = computedStyleOfCIC.getPropertyValue('transform');
+        let matrixOfCIC = new DOMMatrixReadOnly(transformValue);
+        let translateXNumber = matrixOfCIC.m41;
+
+        let newTranslateXNumber = translateXNumber - totalTranslateX;
+
+        carouselInner.style.transform = `translate(${newTranslateXNumber}px, 0px)`;
+
+        let newPositon = positionNum + 1;
+        let newPositonStr = String(newPositon);
+        carouselWrapper.setAttribute("data-position", newPositonStr);
+
+        if (newPositon == amountOfItems - 1) {
+            rightBtn.classList.add("faded");
+        }
+    }
+</script>

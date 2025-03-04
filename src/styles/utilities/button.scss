@@ -1,0 +1,56 @@
+.btn-xs {
+    padding: 0.6rem 1.75rem;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.btn-sm {
+    padding: 0.8rem 2rem;
+    border-radius: 0.25rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+}
+
+.btn-md {
+    padding: 1rem 2.25rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+}
+
+.btn-lg {
+    padding: 1.25rem 2.5rem;
+    border-radius: 0.75rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+
+$btn-colors: (
+    "btn-primary": var(--color-primary),
+    "btn-primary-darker": var(--color-primary-darker),
+    "btn-secondary": var(--color-secondary),
+    "btn-tertiary": var(--color-tertiary),
+    "btn-white": var(--color-white),
+    "btn-black": var(--color-black)
+);
+
+
+.btn {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    @each $key, $value in $btn-colors {
+        &.#{$key} {
+            &.btn-filled {
+                background-color: $value;
+            }
+
+            &.btn-outline {
+                outline: 4px solid $value;
+                outline-offset: -4px;
+                background-color: transparent;
+            }
+        }
+    }
+}
