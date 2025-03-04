@@ -1,0 +1,64 @@
+---
+interface Props {
+    direction?: "row" | "col";
+    align?: "start" | "center" | "end";
+    justify?: "start" | "center" | "end" | "between";
+    gap?: "sm" | "lg";
+    position?: "relative" | "absolute";
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+}
+
+const { direction = "col", align = "start", justify = "center", gap = "sm" } = Astro.props;
+---
+<div class=`card ${direction} align-${align} justify-${justify} gap-${gap}`>
+    <slot />
+</div>
+
+<style lang="scss">
+    div {
+        display: flex;
+    }
+    
+    .col {
+        flex-direction: column;
+    }
+
+    .align-start {
+        align-items: start;
+    }
+
+    .align-center {
+        align-items: center;
+    }
+
+    .align-end {
+        align-items: end;
+    }
+
+    .justify-start {
+        justify-content: start;
+    }
+
+    .justify-center {
+        justify-content: center;
+    }
+
+    .justify-end {
+        justify-content: end;
+    }
+
+    .justify-between {
+        justify-content: space-between;
+    }
+
+    .gap-sm {
+        gap: 2rem;
+    }
+
+    .gap-lg {
+        gap: 2rem;
+    }
+</style>
