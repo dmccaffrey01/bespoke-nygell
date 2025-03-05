@@ -1,0 +1,87 @@
+---
+---
+
+<section class="flex flex-center height-fill height-sm">
+    <div class="sc flex flex-col flex-center gap-200">
+        <form action="" class="flex flex-col align-start gap-200">
+            <div class="form-group flex flex-col align-start gap-50 width-fill">
+                <labal class="text text-md text-secondary" for="id_name">Name</labal>
+                <input type="text" name="id_name" id="id_name" class="width-fill br-50 text text-md text-secondary" required>
+            </div>
+            <div class="form-group flex flex-col align-start gap-50 width-fill">
+                <labal class="text text-md text-secondary" for="id_email">Email</labal>
+                <input type="email" name="id_email" id="id_email" class="width-fill br-50 text text-md text-secondary" required>
+            </div>
+            <div class="form-group flex flex-col align-start gap-50 width-fill">
+                <labal class="text text-md text-secondary" for="id_message">Message</labal>
+                <textarea name="id_message" id="id_message" class="width-fill br-50 text text-md text-secondary" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-md btn-tertiary btn-outline text-md text-tertiary width-fill flex-center">Send Message</button>
+        </form>
+        <div class="info-container flex flex-col flex-center gap-100">
+            <div class="text-container flex flex-row gap-75 justify-start align-center">
+                <div class="icon-container">
+                    <div class="tmp-icon"></div>
+                </div>
+                <p class="text text-md text-secondary">contact@bespokefloorsanding.ie</p>
+            </div>
+            <div class="text-container flex flex-row gap-75 justify-start align-center">
+                <div class="icon-container">
+                    <div class="tmp-icon"></div>
+                </div>
+                <p class="text text-md text-secondary">+353 87 333 3333</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    form {
+        width: 600px;
+
+        label {
+            font-weight: 600;
+        }
+
+        input, textarea {
+            background-color: var(--color-primary-darker);
+            border-bottom: 4px solid var(--color-secondary);
+            outline-offset: -4px;
+            padding: 0.5rem;
+        }
+
+        textarea {
+            resize: none;
+            overflow: none;
+            field-sizing: content;
+            min-height: 4lh;
+        }
+
+        textarea {
+            scrollbar-width: none;
+            -ms-overflow-style: none; 
+        }
+
+        textarea::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .info-container {
+        .text {
+            font-weight: 600;
+        }
+    }
+
+    .icon-container {
+        width: 2rem;
+        height: 2rem;
+
+        .tmp-icon {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: black;
+        }
+    }
+</style>
