@@ -17,5 +17,21 @@ import Footer from '../layouts/Footer.astro';
         <slot />
     </main>
     <Footer></Footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let callNumbers = document.querySelectorAll(".call-number");
+            let isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+
+            callNumbers.forEach((callNumber) => {
+                callNumber.addEventListener("click", () => {
+                        if (isMobile) {
+                            window.location.href = "tel:+353874027101";
+                        }
+                        window.location.href = "/contact";
+                });
+            });
+
+        });
+    </script>
 </body>
 </html>

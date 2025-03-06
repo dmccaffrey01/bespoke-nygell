@@ -16,33 +16,33 @@ section {
             margin-bottom: calc(var(--height-header) / 2);
         }
     }
+}
 
-    .sc {
-        width: var(--width-sc);
+.sc {
+    width: var(--width-sc);
+}
+
+.call-number {
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.img-container {
+    img {
+        width: 100%;
+        height: 100%;
     }
 
-    .img-container {
-        img {
-            width: 100%;
-            height: 100%;
-        }
-
-        .overlay {
-            width: 100%;
-            height: 100%;
-            z-index: 999;
-        }
+    .overlay {
+        width: 100%;
+        height: 100%;
+        z-index: 999;
     }
+}
 
-    .icon-container {
-        svg {
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    .copy-number {
-        font-weight: 800;
-        cursor: pointer;
+.icon-container {
+    svg {
+        width: 100%;
+        height: 100%;
     }
 }
