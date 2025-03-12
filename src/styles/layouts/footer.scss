@@ -1,0 +1,63 @@
+@use '../media-query.scss' as *;
+
+footer {
+    padding: 40px 0;
+
+    img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .div {
+        height: 1.5rem;
+        width: 2px;
+        background-color: var(--color-white);
+    }
+
+    .icon-container {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+@include screen-size("xs") {
+    footer {
+        padding: 1rem 0;
+    
+        .sc {
+            justify-content: center;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-container {
+            gap: 1rem;
+            flex-direction: column-reverse;
+        }
+    
+        nav.flex {
+            gap: 0.5rem;
+        }
+    
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    
+        .div {
+            height: 1.5rem;
+            width: 2px;
+            background-color: var(--color-white);
+        }
+    
+        .icon-container {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .info-container {
+            align-items: center;
+        }
+    }
+}

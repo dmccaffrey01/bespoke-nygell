@@ -1,0 +1,111 @@
+@use '../../media-query.scss' as *;
+
+:root {
+    --home-services-card-width: calc(((var(--width-sc) - 12.5rem) - (2 * 2.5rem)) / 3);
+    --home-services-card-height: calc((var(--home-services-card-width) / 3) * 2);
+
+    @include screen-size("xs") {
+        --home-services-card-width: var(--width-sc);
+        --home-services-card-height: calc((var(--home-services-card-width) / 3) * 2);
+    }
+}
+
+.services-wrapper {
+    height: fit-content;
+
+    .carousel {
+        width: calc(100% - 12.5rem);
+        height: var(--home-services-card-height);
+    
+        .carousel-inner {
+            width: fit-content;
+            transition: all 0.3s ease-in-out;
+    
+            .carousel-item {
+                width: var(--home-services-card-width);
+                height: var(--home-services-card-height);
+                margin-right: 2.5rem;
+    
+                h2 {
+                    font-weight: 600;
+                }
+    
+                .tmp-img {
+                    background-color: green;
+                    width: 100%;
+                    height: 100%;
+                }
+    
+                .overlay {
+                    background: linear-gradient(to bottom, rgba(white, 0.2), rgba(black, 0.9));
+                    left: 0;
+                    top: 0;
+                }
+    
+                .text {
+                    bottom: 1.5rem;
+                    z-index: 1000;
+                    width: 100%;
+                    text-align: center;
+                }
+                
+            }
+        }
+    }
+    
+    .carousel-btn {
+        width: 3.75rem;
+        height: 3.75rem;
+        top: 50%;
+        translate: 0 -50%;
+        z-index: 1000;
+        cursor: pointer;
+    
+        &.left {
+            rotate: 90deg;
+            left: 0;
+        }
+    
+        &.right {
+            rotate: -90deg;
+            right: 0;
+        }
+    }
+    
+}
+
+@include screen-size("xs") {
+
+    section.home-services-section {
+        padding: 1rem 0 2.5rem 0;
+        .sc {
+            gap: 1rem;
+        }
+
+        .services-wrapper {
+            .carousel {
+                width: 100%;
+                border-radius: 0.5rem;
+    
+                .carousel-inner .carousel-item {
+                    margin-right: 0;
+                    border-radius: 0;
+                }
+            }
+    
+            .carousel-btn {
+                width: 3rem;
+                height: 3rem;
+                bottom: 0.75rem;
+                top: auto;
+                translate: 0 0;
+    
+                path {
+                    fill: var(--color-white);
+                }
+            }
+        }
+    }
+
+}
+

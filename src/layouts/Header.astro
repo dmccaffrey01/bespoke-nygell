@@ -1,14 +1,23 @@
 ---
+import { Image } from 'astro:assets';
+import img1 from '/src/assets/bespoke-floor-sanding-logo-transparent.png';
+import '/src/styles/layouts/header.scss';
 ---
 
-<header class="flex flex-center bg-secondary">
-    <div class="sc flex justify-between">
+<header class="flex flex-center bg-secondary pos-relative">
+    <div class="sc flex align-center justify-between">
         <a href="/" class="logo flex flex-row align-center">
-            <img src="/src/assets/bespoke-floor-sanding-logo-transparent.png" alt="Bespoke Floor Sanding Logo">
+            <Image src={img1} alt="Bespoke Floor Sanding Logo"></Image>
             <h1>Bespoke Floor <br>Sanding Co.</h1>
         </a>
 
-        <nav class="flex flex-row align-center gap-200">
+        <div class="nav-btn flex flex-col">
+            <div class="nav-btn-bar b1"></div>
+            <div class="nav-btn-bar b2"></div>
+            <div class="nav-btn-bar b3"></div>
+        </div>
+
+        <nav class="nav-menu flex flex-row align-center gap-200">
             <a href="/" class="text-sm text-white">Home</a>
             <a href="/services" class="text-sm text-white">Services</a>
             <a href="/contact" class="text-sm text-white">Contact</a>
@@ -17,30 +26,13 @@
     </div>
 </header>
 
-<style lang="scss">
-    header {
-        height: var(--height-header);
+<script>
+    const navBtn = document.querySelector(".nav-btn");
+    const navMenu = document.querySelector(".nav-menu");
 
-        .sc {
-            width: var(--width-sc);
-        }
-    }
+    navBtn?.addEventListener("click", () => {
+        navMenu?.classList.toggle("active");
+        navBtn.classList.toggle("active");
+    });
+</script>
 
-    .logo {
-        gap: 1rem;
-    }
-
-    img {
-        width: 80px;
-        height: 80px;
-    }
-
-    h1 {
-        font-family: var(--ff-logo);
-        font-size: 1.5rem;
-        line-height: 1.75rem;
-        color: var(--color-white);
-        text-transform: uppercase;
-        font-weight: 500;
-    }
-</style>

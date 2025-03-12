@@ -1,0 +1,74 @@
+@use '../../media-query.scss' as *;
+
+section.contact-form-section {
+    form {
+        width: 600px;
+
+        label {
+            font-weight: 600;
+        }
+
+        input, textarea {
+            background-color: var(--color-primary-darker);
+            border-bottom: 4px solid var(--color-secondary);
+            padding: 0.5rem;
+        }
+
+        textarea {
+            resize: none;
+            overflow: none;
+            field-sizing: content;
+            min-height: 4lh;
+        }
+
+        textarea {
+            scrollbar-width: none;
+            -ms-overflow-style: none; 
+        }
+
+        textarea::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .info-container {
+        .text {
+            font-weight: 600;
+        }
+    }
+
+    .icon-container {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+@include screen-size("xs") {
+    section.contact-form-section {
+        .sc {
+            gap: 1rem;
+        }
+
+        form {
+            width: 100%;
+            gap: 1rem;
+        }
+
+        .info-container {
+            gap: 0.25rem;
+        }
+
+        input, textarea {
+            border-bottom: 2px;
+            border-radius: 0.25rem;
+        }
+
+        .form-group {
+            gap: 0.25rem;
+        }
+
+        .contact-submit-btn {
+            padding: 0.75rem 0;
+        }
+    }
+}

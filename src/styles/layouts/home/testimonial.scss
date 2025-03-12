@@ -1,0 +1,114 @@
+@use '../../media-query.scss' as *;
+
+section.home-testimonial-section {
+    .carousel-wrapper {
+        height: fit-content;
+    }
+
+    .carousel {
+        width: calc(100% - 12.5rem);
+        height: 296px;
+
+        .carousel-inner {
+            width: fit-content;
+            transition: all 0.3s ease-in-out;
+
+            .carousel-item {
+                width: 600px;
+                padding: 2rem;
+                margin-right: 2.5rem;
+
+                h2 {
+                    font-weight: 600;
+                }
+
+                .icon-container {
+                    width: 2rem;
+                    height: 2rem;
+                }
+                
+            }
+        }
+    }
+
+    .carousel-dots {
+        display: none;
+        .dot {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: var(--color-secondary);
+    
+            &.current {
+                background-color: var(--color-white);
+                outline: 2px solid var(--color-secondary);
+                outline-offset: -2px;
+            }
+        }
+    }
+
+    .carousel-btn {
+        width: 3.75rem;
+        height: 3.75rem;
+        top: 50%;
+        translate: 0 -50%;
+        cursor: pointer;
+        z-index: 1000;
+
+        &.left {
+            rotate: 90deg;
+            left: 0;
+        }
+
+        &.right {
+            rotate: -90deg;
+            right: 0;
+        }
+    }
+}
+
+@include screen-size("xs") {
+    section.home-testimonial-section {
+        padding-bottom: 1rem;
+
+        .carousel-wrapper {
+            height: calc(196px + 1rem + 3rem);
+            justify-content: flex-start;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 196px;
+            border-radius: 0.5rem;
+
+            .carousel-inner {
+                .carousel-item {
+                    width: var(--width-sc);
+                    gap: 1rem;
+                    margin-right: 0;
+                    padding: 1rem;
+
+                    .text {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
+
+        .carousel-btn {
+            bottom: 0.5rem;
+            top: auto;
+            translate: 0 0;
+            width: 3rem;
+            height: 3rem;
+        }
+
+        .carousel-dots {
+            display: flex;
+        }
+    }
+}

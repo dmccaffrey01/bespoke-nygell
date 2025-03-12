@@ -1,7 +1,8 @@
 ---
+import '/src/styles/layouts/home/testimonial.scss';
 ---
 
-<section class="flex flex-center height-md">
+<section class="home-testimonial-section flex flex-center height-md">
     <div class="sc flex flex-row justify-between align-center">
         <div class="testimonial-wrapper carousel-wrapper pos-relative flex flex-center flex-col gap-150 width-fill" data-carousel-position="1">
             <div class="carousel-btn icon-container left pos-absolute">
@@ -12,7 +13,7 @@
             </div>
             <div class="carousel pos-relative o-hidden br-100">
                 <div class="carousel-inner flex flex-row pos-absolute">
-                    <div class="carousel-item flex flex-col align-start gap-150 bg-primary-darker br-100">
+                    <div class="carousel-item flex flex-col align-start gap-150 br-100 bg-primary-darker">
                         <h2 class="text text-lg text-secondary">Efficient &amp; On Time!</h2>
                         <p class="text text-md text-secondary">
                             Nygell arrived right on time and worked efficiently to sand and refinish our living room floors. Highly recommend his service!
@@ -24,7 +25,7 @@
                             <p class="name-text text text-md text-primary-alt">Gary - Dublin</p>
                         </div>
                     </div>
-                    <div class="carousel-item flex flex-col align-start gap-150 bg-primary-darker br-100">
+                    <div class="carousel-item flex flex-col align-start gap-150 br-100 bg-primary-darker">
                         <h2 class="text text-lg text-secondary">Clean & Reliable!</h2>
                         <p class="text text-md text-secondary">
                             Nygell did an incredible job restoring our worn-out hardwood floors. He was professional, did an amazing finish, and left no mess behind!
@@ -36,7 +37,7 @@
                             <p class="name-text text text-md text-primary-alt">Emma - Monaghan</p>
                         </div>
                     </div>
-                    <div class="carousel-item flex flex-col align-start gap-150 bg-primary-darker br-100">
+                    <div class="carousel-item flex flex-col align-start gap-150 br-100 bg-primary-darker">
                         <h2 class="text text-lg text-secondary">Fantastic Job!</h2>
                         <p class="text text-md text-secondary">
                             Couldn't be happier with the work Nygell did! Our old, scratched wooden floors now look brand new with a beautiful, even finish!
@@ -48,7 +49,7 @@
                             <p class="name-text text text-md text-primary-alt">Michael - Cavan</p>
                         </div>
                     </div>
-                    <div class="carousel-item flex flex-col align-start gap-150 bg-primary-darker br-100">
+                    <div class="carousel-item flex flex-col align-start gap-150 br-100 bg-primary-darker">
                         <h2 class="text text-lg text-secondary">Top-Notch Work!</h2>
                         <p class="text text-md text-secondary">
                             Nygell did an outstanding job refinishing our hardwood floors. He was professional, delivered a flawless finish, and left everything spotless!
@@ -62,6 +63,12 @@
                     </div>
                 </div>
             </div>
+            <div class="carousel-dots flex flex-row gap-50">
+                <div class="dot current" data-carousel-position="1"></div>
+                <div class="dot" data-carousel-position="2"></div>
+                <div class="dot" data-carousel-position="3"></div>
+                <div class="dot" data-carousel-position="4"></div>
+            </div>
             <div class="carousel-btn icon-container right pos-absolute">
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-secondary" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 0 1 1.414 0L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414" clip-rule="evenodd" />
@@ -72,63 +79,21 @@
     </div>
 </section>
 
-<style lang="scss">
-    .carousel-wrapper {
-        height: fit-content;
-    }
-
-    .carousel {
-        width: calc(100% - 12.5rem);
-        height: 296px;
-
-        .carousel-inner {
-            width: fit-content;
-            transition: all 0.3s ease-in-out;
-
-            .carousel-item {
-                width: 600px;
-                padding: 2rem;
-                margin-right: 2.5rem;
-
-                h2 {
-                    font-weight: 600;
-                }
-
-                .icon-container {
-                    width: 2rem;
-                    height: 2rem;
-                }
-                
-            }
-        }
-    }
-
-    .carousel-btn {
-        width: 3.75rem;
-        height: 3.75rem;
-        top: 50%;
-        translate: 0 -50%;
-        cursor: pointer;
-
-        &.left {
-            rotate: 90deg;
-            left: 0;
-        }
-
-        &.right {
-            rotate: -90deg;
-            right: 0;
-        }
-    }
-</style>
-
 <script>
     window.addEventListener("DOMContentLoaded", () => {
+        let lastPosition: number;
+        let carouselInnerGap;
+
         let carouselWrapper = document.querySelector(".testimonial-wrapper");
         if (carouselWrapper instanceof HTMLElement) {
             let leftBtn = carouselWrapper.querySelector(".carousel-btn.left");
             let rightBtn = carouselWrapper.querySelector(".carousel-btn.right");
             let carouselInner = carouselWrapper.querySelector(".carousel-inner");
+            let dotsContainer = carouselWrapper.querySelector(".carousel-dots");
+
+            if (!(dotsContainer instanceof HTMLElement)) {
+                return;
+            }
 
             if (carouselInner instanceof HTMLElement) {
                 let carouselItems = carouselWrapper.querySelectorAll(".carousel-item");
@@ -138,66 +103,84 @@
                 let widthStr = widthOfCI.split("px")[0];
                 let widthNum = Number(widthStr);
 
-                let totalTranslateX = widthNum + 40;
-
                 let amountOfItems = carouselItems.length;
 
+                if (window.matchMedia(`(max-width: 480px)`).matches) {
+                    lastPosition = amountOfItems;
+                    carouselInnerGap = 0;
+                } else {
+                    lastPosition = amountOfItems - 2;
+                    carouselInnerGap = 40;
+                }
+
+                let totalTranslateX = widthNum + carouselInnerGap;
+
                 if (rightBtn instanceof HTMLElement && leftBtn instanceof HTMLElement) {
-                    console.log("4");
                     leftBtn.addEventListener("click", () => {
-                        let newPosition = findNewPosition(carouselWrapper, amountOfItems, "left");
+                        let newPosition = findNewPosition(carouselWrapper, lastPosition, "left");
                         moveCarouseltoPosition(carouselWrapper, carouselInner, totalTranslateX, newPosition);
+                        moveDots(dotsContainer, newPosition);
                         carouselWrapper.classList.add("autoScrollDisabled");
                     });
 
                     rightBtn.addEventListener("click", () => {
-                        let newPosition = findNewPosition(carouselWrapper, amountOfItems, "right");
+                        let newPosition = findNewPosition(carouselWrapper, lastPosition, "right");
                         moveCarouseltoPosition(carouselWrapper, carouselInner, totalTranslateX, newPosition);
+                        moveDots(dotsContainer, newPosition);
                         carouselWrapper.classList.add("autoScrollDisabled");
                     });
                 }
 
                 window.setInterval(() => {
                     if (!(carouselWrapper.classList.contains("autoScrollDisabled"))) {
-                        let newPosition = findNewPosition(carouselWrapper, amountOfItems, "right");
+                        let newPosition = findNewPosition(carouselWrapper, lastPosition, "right");
                         moveCarouseltoPosition(carouselWrapper, carouselInner, totalTranslateX, newPosition);
+                        moveDots(dotsContainer, newPosition);
                     }
                 }, 4000);
             }
         }
-    });
 
-    let findNewPosition = (carouselWrapper: HTMLElement, amountOfItems: number, directionOrNewPosition: number | string) => {
-        let position = carouselWrapper.getAttribute("data-carousel-position");
-        let positionNum = Number(position);
-        let newPosition;
+        let findNewPosition = (carouselWrapper: HTMLElement, lastPosition: number, directionOrNewPosition: number | string) => {
+            let position = carouselWrapper.getAttribute("data-carousel-position");
+            let positionNum = Number(position);
+            let newPosition;
 
-        if (directionOrNewPosition == "left") {
-            if (positionNum <= 1) {
-                newPosition = amountOfItems;
+            if (directionOrNewPosition == "left") {
+                if (positionNum <= 1) {
+                    newPosition = lastPosition;
+                } else {
+                    newPosition = positionNum - 1;
+                }
+            } else if (directionOrNewPosition == "right") {
+                if (positionNum >= lastPosition) {
+                    newPosition = 1;
+                } else {
+                    newPosition = positionNum + 1;
+                }
             } else {
-                newPosition = positionNum - 1;
+                newPosition = Number(directionOrNewPosition);
             }
-        } else if (directionOrNewPosition == "right") {
-            if (positionNum >= amountOfItems - 1) {
-                newPosition = 1;
-            } else {
-                newPosition = positionNum + 1;
-            }
-        } else {
-            newPosition = Number(directionOrNewPosition);
+            
+            return newPosition;
         }
-        
-        return newPosition;
-    }
 
-    let moveCarouseltoPosition = (carouselWrapper: HTMLElement, carouselInner: HTMLElement, totalTranslateX: number, newPosition: number) => {
-        let newTranslateXNumber = totalTranslateX * (newPosition - 1) * -1;
+        let moveCarouseltoPosition = (carouselWrapper: HTMLElement, carouselInner: HTMLElement, totalTranslateX: number, newPosition: number) => {
+            let newTranslateXNumber = totalTranslateX * (newPosition - 1) * -1;
 
-        carouselInner.style.transform = `translate(${newTranslateXNumber}px, 0px)`;
+            carouselInner.style.transform = `translate(${newTranslateXNumber}px, 0px)`;
 
-        let newPositonStr = String(newPosition);
-        carouselWrapper.setAttribute("data-carousel-position", newPositonStr);
-    }
+            let newPositonStr = String(newPosition);
+            carouselWrapper.setAttribute("data-carousel-position", newPositonStr);
+        }
+
+        let moveDots = (dotsContainer: HTMLElement, newPosition: number) => {
+            let currentDot = dotsContainer.querySelector(".current");
+            currentDot?.classList.remove("current");
+
+            let newCurrentDot = dotsContainer.querySelector(`.dot[data-carousel-position="${newPosition}"]`);
+            newCurrentDot?.classList.add("current");
+        }
+    });
 
 </script>

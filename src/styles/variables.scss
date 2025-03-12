@@ -1,27 +1,104 @@
-// Fonts Import
+@use './media-query.scss' as *;
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
+
 :root {
     // Colors
-    --color-primary: oklch(93.26% 0.0225 73.02);
-    --color-primary-darker: oklch(89.88% 0.034 72.89);
-    --color-primary-alt: oklch(53.59% 0.0503 71.91);
-    --color-secondary: oklch(23.14% 0.0302 70.98);
-    --color-tertiary: oklch(40.19% 0.1252 256.42);
+    --color-primary: oklch(99.07% 0.0095 93.57);
+    --color-primary-darker: oklch(95.21% 0.022 86.06);
+    --color-primary-alt: oklch(42.73% 0.0391 84.52);
+    --color-secondary: oklch(16.57% 0.0308 93.22);
+    --color-tertiary-2: oklch(76.49% 0.1244 64.76);
+    --color-tertiary: oklch(38.69% 0.085 275.67);
     --color-white: oklch(1 0 0);
     --color-black: oklch(0 0 0);
-
+    
     // Font Families
     --ff-body: 'Roboto', sans-serif;
     --ff-heading: 'Roboto', sans-serif;
     --ff-logo: 'EB Garamond', sans-serif;
 
-    // Base Font Size
+    // Font Size & Line Height
     --fs-base: 16px;
+
+    --font-size-xs: 1rem;
+    --line-height-xs: 1.5rem;
+  
+    --font-size-sm: 1.25rem;
+    --line-height-sm: 1.875rem;
+  
+    --font-size-md: 1.5rem;
+    --line-height-md: 2.25rem;
+  
+    --font-size-lg: 2rem;
+    --line-height-lg: 2.5rem;
+  
+    --font-size-xl: 3rem;
+    --line-height-xl: 3.75rem;
+  
+    --font-size-2xl: 4rem;
+    --line-height-2xl: 5rem;
 
     // Widths & Heights
     --height-header: 120px;
     --width-sc: 1440px;
+
+    // Breakpoints
+    --breakpoint-xs: 480px;
+    --breakpoint-sm: 768px;
+    --breakpoint-md: 1024px;
+    --breakpoint-lg: 1280px;
+    --breakpoint-xl: 1440px;
+    --breakpoint-max: 1600px;
+
+    @include screen-size("max") {
+        --width-sc: 1280px;
+    }
+
+    @include screen-size("xl") {
+        --width-sc: 1024px;
+
+        --font-size-xs: 0.9rem;
+        --line-height-xs: 1.35rem;
+
+        --font-size-sm: 1rem;
+        --line-height-sm: 1.5rem;
+    
+        --font-size-md: 1.25rem;
+        --line-height-md: 1.875rem;
+    
+        --font-size-lg: 1.5rem;
+        --line-height-lg: 2.25rem;
+    
+        --font-size-xl: 2rem;
+        --line-height-xl: 2.5rem;
+    
+        --font-size-2xl: 3rem;
+        --line-height-2xl: 3.75rem;
+    }
+
+    @include screen-size("xs") {
+        --width-sc: calc(100vw - 2rem);
+    
+        --font-size-xs: 1rem;
+        --line-height-xs: 1.5rem;
+      
+        --font-size-sm: 1rem;
+        --line-height-sm: 1.5rem;
+      
+        --font-size-md: 1rem;
+        --line-height-md: 1.5rem;
+      
+        --font-size-lg: 1.15rem;
+        --line-height-lg: 1.75rem;
+      
+        --font-size-xl: 1.35rem;
+        --line-height-xl: 2.5rem;
+      
+        --font-size-2xl: 1.75rem;
+        --line-height-2xl: 2.5rem;
+    }
 }
+

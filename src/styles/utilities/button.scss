@@ -1,29 +1,29 @@
 .btn-xs {
     padding: 0.6rem 1.75rem;
     border-radius: 0.25rem;
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
 }
 
 .btn-sm {
     padding: 0.8rem 2rem;
     border-radius: 0.25rem;
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
 }
 
 .btn-md {
     padding: 1rem 2.25rem;
     border-radius: 0.5rem;
-    font-size: 1.5rem;
-    line-height: 2.25rem;
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
 }
 
 .btn-lg {
     padding: 1.25rem 2.5rem;
     border-radius: 0.75rem;
-    font-size: 2rem;
-    line-height: 2.5rem;
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-lg);
 }
 
 $btn-colors: (

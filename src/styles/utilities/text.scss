@@ -1,33 +1,35 @@
 .text-xs {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
 }
 
 .text-sm {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
 }
 
 .text-md {
-    font-size: 1.5rem;
-    line-height: 2.25rem;
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
 }
 
 .text-lg {
-    font-size: 2rem;
-    line-height: 2.5rem;
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-lg);
 }
 
 .text-xl {
-    font-size: 3rem;
-    line-height: 3.75rem;
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-xl);
     font-family: var(--ff-heading);
+    font-weight: 800;
 }
 
 .text-2xl {
-    font-size: 4rem;
-    line-height: 5rem;
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-2xl);
     font-family: var(--ff-heading);
+    font-weight: 800;
 }
 
 $text-colors: (

@@ -2,6 +2,12 @@
 import '../styles/global.scss';
 import Header from '../layouts/Header.astro';
 import Footer from '../layouts/Footer.astro';
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -9,7 +15,34 @@ import Footer from '../layouts/Footer.astro';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{title ? `${title} - Bespoke Floor Sanding` : 'Bespoke Floor Sanding'}</title>
+    <meta name="description" content="Bespoke Floor Sanding offers professional floor sanding and finishing services for residential and commercial properties. Serving Dublin, Midlands, Monaghan, Cavan, Meath, Louth, D12, D4, West Meath, Sligo, Fermanagh, we specialize in restoring wood floors to their original beauty with customized sanding and finishing techniques." />
+    <meta name="keywords" content="floor sanding, wood floor restoration, bespoke floor sanding, floor finishing, hardwood floor sanding, commercial floor sanding, residential floor sanding, Dublin, Midlands, Monaghan, Cavan, Meath, Louth, D12, D4, West Meath, Sligo, Fermanagh, floor sanding, wooden floors, custom floor sanding" />
+    <meta property="og:title" content="Bespoke Floor Sanding - Professional Floor Restoration" />
+    <meta property="og:description" content="We provide expert floor sanding and finishing services across Dublin, Midlands, Monaghan, Cavan, Meath, Louth, D12, D4, West Meath, Sligo, Fermanagh, bringing your wooden floors back to life. Perfect for homes and businesses." />
+    <meta property="og:image" content="/bespoke-floor-sanding-logo-transparent.png" />
+    <meta property="og:url" content="https://bespokefloorsanding.ie/" />
+    <meta property="og:type" content="website" />
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FlooringContractor",
+          "name": "Bespoke Floor Sanding",
+          "description": "Expert floor sanding and finishing services for residential and commercial properties. Serving Dublin, Midlands, Monaghan, Cavan, Meath, Louth, D12, D4, West Meath, Sligo, Fermanagh, with customized wood floor restoration.",
+          "url": "https://bespokefloorsanding.ie/",
+          "telephone": "+353874027101",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Derryledigan",
+            "addressLocality": "Scotstown",
+            "addressRegion": "Monaghan",
+            "postalCode": "H18 NN22",
+            "addressCountry": "Ireland"
+          },
+          "logo": "/bespoke-floor-sanding-logo-transparent.png",
+          "image": "/bespoke-floor-sanding-logo-transparent.png",
+        }
+    </script>
 </head>
 <body>
     <Header></Header>
@@ -20,11 +53,10 @@ import Footer from '../layouts/Footer.astro';
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             let callNumbers = document.querySelectorAll(".call-number");
-            let isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
             callNumbers.forEach((callNumber) => {
                 callNumber.addEventListener("click", () => {
-                        if (isMobile) {
+                        if (window.matchMedia(`(max-width: 480px)`).matches) {
                             window.location.href = "tel:+353874027101";
                         }
                         window.location.href = "/contact";

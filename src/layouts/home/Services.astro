@@ -1,7 +1,13 @@
 ---
+import '/src/styles/layouts/home/services.scss';
+import { Image } from 'astro:assets';
+import img1 from '/src/assets/floor-varnishing-sealing-service.png';
+import img2 from '/src/assets/stair-sanding-service.png';
+import img3 from '/src/assets/floor-restoration-service.png';
+import img4 from '/src/assets/commercial-floor-service.png';
 ---
 
-<section class="flex flex-center height-md">
+<section class="home-services-section flex flex-center height-md">
     <div class="sc flex flex-col gap-250 flex-center">
         <div class="services-wrapper carousel-wrapper pos-relative flex flex-center flex-col gap-150 width-fill" data-carousel-position="1">
             <div class="carousel-btn icon-container left pos-absolute">
@@ -13,28 +19,28 @@
             <div class="carousel pos-relative o-hidden br-100">
                 <div class="carousel-inner flex flex-row pos-absolute">
                     <div class="carousel-item card img-container br-100 o-hidden pos-relative">
-                        <img src="/src/assets/floor-varnishing-sealing-service.png" alt="Floor Varnishing and Sealing Service">
+                        <Image src={img1} alt="Floor Varnishing and Sealing Service"></Image>
                         <div class="overlay pos-absolute"></div>
                         <h2 class="text text-sm text-white pos-absolute">
                             Floor Varnishing &amp; Sealing
                         </h2>
                     </div>
                     <div class="carousel-item card img-container br-100 o-hidden pos-relative">
-                        <img src="/src/assets/stair-sanding-service.png" alt="Stripping and Sanding Stairs Service">
+                        <Image src={img2} alt="Stripping and Sanding Stairs Service"></Image>
                         <div class="overlay pos-absolute"></div>
                         <h2 class="text text-sm text-white pos-absolute">
                             Stripping &amp; Sanding Stairs
                         </h2>
                     </div>
                     <div class="carousel-item card img-container br-100 o-hidden pos-relative">
-                        <img src="/src/assets/floor-restoration-service.png" alt="Floor Restorations Service">
+                        <Image src={img3} alt="Floor Restorations Service"></Image>
                         <div class="overlay pos-absolute"></div>
                         <h2 class="text text-sm text-white pos-absolute">
                             Wood Floor Restorations
                         </h2>
                     </div>
                     <div class="carousel-item card img-container br-100 o-hidden pos-relative">
-                        <img src="/src/assets/commercial-floor-service.png" alt="Commercial Floor Service">
+                        <Image src={img4} alt="Commercial Floor Service"></Image>
                         <div class="overlay pos-absolute"></div>
                         <h2 class="text text-sm text-white pos-absolute">
                             Commercial Floor Restorations
@@ -53,75 +59,11 @@
     </div>
 </section>
 
-<style lang="scss">
-    $card-width: calc(((var(--width-sc) - 12.5rem) - (2 * 2.5rem)) / 3);
-    $card-height: calc(($card-width / 3) * 2);
-
-    .carousel-wrapper {
-        height: fit-content;
-    }
-
-    .carousel {
-        width: calc(100% - 12.5rem);
-        height: $card-height;
-
-        .carousel-inner {
-            width: fit-content;
-            transition: all 0.3s ease-in-out;
-
-            .carousel-item {
-                width: $card-width;
-                height: $card-height;
-                margin-right: 2.5rem;
-
-                h2 {
-                    font-weight: 600;
-                }
-
-                .tmp-img {
-                    background-color: green;
-                    width: 100%;
-                    height: 100%;
-                }
-
-                .overlay {
-                    background: linear-gradient(to bottom, rgba(white, 0.2), rgba(black, 0.9));
-                    left: 0;
-                    top: 0;
-                }
-
-                .text {
-                    bottom: 1.5rem;
-                    z-index: 1000;
-                    width: 100%;
-                    text-align: center;
-                }
-                
-            }
-        }
-    }
-
-    .carousel-btn {
-        width: 3.75rem;
-        height: 3.75rem;
-        top: 50%;
-        translate: 0 -50%;
-        cursor: pointer;
-
-        &.left {
-            rotate: 90deg;
-            left: 0;
-        }
-
-        &.right {
-            rotate: -90deg;
-            right: 0;
-        }
-    }
-</style>
-
 <script>
     window.addEventListener("DOMContentLoaded", () => {
+        let lastPosition: number;
+        let carouselInnerGap;
+
         let carouselWrapper = document.querySelector(".services-wrapper");
         if (carouselWrapper instanceof HTMLElement) {
             let leftBtn = carouselWrapper.querySelector(".carousel-btn.left");
@@ -136,19 +78,27 @@
                 let widthStr = widthOfCI.split("px")[0];
                 let widthNum = Number(widthStr);
 
-                let totalTranslateX = widthNum + 40;
-
                 let amountOfItems = carouselItems.length;
+
+                if (window.matchMedia(`(max-width: 480px)`).matches) {
+                    lastPosition = amountOfItems;
+                    carouselInnerGap = 0;
+                } else {
+                    lastPosition = amountOfItems - 2;
+                    carouselInnerGap = 40;
+                }
+
+                let totalTranslateX = widthNum + carouselInnerGap;
 
                 if (rightBtn instanceof HTMLElement && leftBtn instanceof HTMLElement) {
                     leftBtn.addEventListener("click", () => {
-                        let newPosition = findNewPosition(carouselWrapper, amountOfItems, "left");
+                        let newPosition = findNewPosition(carouselWrapper, lastPosition, "left");
                         moveCarouseltoPosition(carouselWrapper, carouselInner, totalTranslateX, newPosition);
                         carouselWrapper.classList.add("autoScrollDisabled");
                     });
 
                     rightBtn.addEventListener("click", () => {
-                        let newPosition = findNewPosition(carouselWrapper, amountOfItems, "right");
+                        let newPosition = findNewPosition(carouselWrapper, lastPosition, "right");
                         moveCarouseltoPosition(carouselWrapper, carouselInner, totalTranslateX, newPosition);
                         carouselWrapper.classList.add("autoScrollDisabled");
                     });
@@ -156,45 +106,45 @@
 
                 window.setInterval(() => {
                     if (!(carouselWrapper.classList.contains("autoScrollDisabled"))) {
-                        let newPosition = findNewPosition(carouselWrapper, amountOfItems, "right");
+                        let newPosition = findNewPosition(carouselWrapper, lastPosition, "right");
                         moveCarouseltoPosition(carouselWrapper, carouselInner, totalTranslateX, newPosition);
                     }
                 }, 4000);
             }
         }
-    });
 
-    let findNewPosition = (carouselWrapper: HTMLElement, amountOfItems: number, directionOrNewPosition: number | string) => {
-        let position = carouselWrapper.getAttribute("data-carousel-position");
-        let positionNum = Number(position);
-        let newPosition;
+        let findNewPosition = (carouselWrapper: HTMLElement, lastPosition: number, directionOrNewPosition: number | string) => {
+            let position = carouselWrapper.getAttribute("data-carousel-position");
+            let positionNum = Number(position);
+            let newPosition;
 
-        if (directionOrNewPosition == "left") {
-            if (positionNum <= 1) {
-                newPosition = amountOfItems;
+            if (directionOrNewPosition == "left") {
+                if (positionNum <= 1) {
+                    newPosition = lastPosition;
+                } else {
+                    newPosition = positionNum - 1;
+                }
+            } else if (directionOrNewPosition == "right") {
+                if (positionNum >= lastPosition) {
+                    newPosition = 1;
+                } else {
+                    newPosition = positionNum + 1;
+                }
             } else {
-                newPosition = positionNum - 1;
+                newPosition = Number(directionOrNewPosition);
             }
-        } else if (directionOrNewPosition == "right") {
-            if (positionNum >= amountOfItems - 2) {
-                newPosition = 1;
-            } else {
-                newPosition = positionNum + 1;
-            }
-        } else {
-            newPosition = Number(directionOrNewPosition);
+            
+            return newPosition;
         }
-        
-        return newPosition;
-    }
 
-    let moveCarouseltoPosition = (carouselWrapper: HTMLElement, carouselInner: HTMLElement, totalTranslateX: number, newPosition: number) => {
-        let newTranslateXNumber = totalTranslateX * (newPosition - 1) * -1;
+        let moveCarouseltoPosition = (carouselWrapper: HTMLElement, carouselInner: HTMLElement, totalTranslateX: number, newPosition: number) => {
+            let newTranslateXNumber = totalTranslateX * (newPosition - 1) * -1;
 
-        carouselInner.style.transform = `translate(${newTranslateXNumber}px, 0px)`;
+            carouselInner.style.transform = `translate(${newTranslateXNumber}px, 0px)`;
 
-        let newPositonStr = String(newPosition);
-        carouselWrapper.setAttribute("data-carousel-position", newPositonStr);
-    }
+            let newPositonStr = String(newPosition);
+            carouselWrapper.setAttribute("data-carousel-position", newPositonStr);
+        }
+    });
 
 </script>

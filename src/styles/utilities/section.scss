@@ -1,4 +1,6 @@
-section {
+@use '../media-query.scss' as *;
+
+section, header, footer, main {
     width: 100%;
 
     &.height-sm {
@@ -29,7 +31,7 @@ section {
 
 .img-container {
     img {
-        width: 100%;
+        width: auto;
         height: 100%;
     }
 
@@ -44,5 +46,17 @@ section {
     svg {
         width: 100%;
         height: 100%;
+    }
+}
+
+@include screen-size("xs") {
+    section {
+        &.height-sm {
+            padding: 3rem 0;
+        }
+    
+        &.height-md {
+            padding: 3rem 0;
+        }
     }
 }

@@ -1,11 +1,14 @@
 ---
+import '/src/styles/layouts/footer.scss';
+import { Image } from 'astro:assets';
+import img1 from '/src/assets/bespoke-floor-sanding-logo-transparent.png';
 ---
 
 <footer class="flex flex-center bg-secondary">
     <div class="sc flex justify-between">
         <div class="nav-container flex flex-row gap-300 flex-center">
             <a href="/" class="logo flex flex-row align-center">
-                <img src="/src/assets/bespoke-floor-sanding-logo-transparent.png" alt="Bespoke Floor Sanding Logo">
+                <Image src={img1} alt="Bespoke Floor Sanding Logo"></Image>
             </a>
     
             <nav class="flex flex-row align-center gap-200">
@@ -18,7 +21,7 @@
                 <a href="/contact" class="text-md text-white">Call Us</a>
             </nav>
         </div>
-        <div class="info-container flex-flex-col gap-50 align-start">
+        <div class="info-container flex flex-col gap-25 align-start">
             <div class="text-container flex flex-row gap-50 justify-start align-center call-number">
                 <div class="icon-container text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.879 5.879C3 6.757 3 8.172 3 11v2c0 2.828 0 4.243.879 5.121C4.757 19 6.172 19 9 19h6c2.828 0 4.243 0 5.121-.879C21 17.243 21 15.828 21 13v-2c0-2.828 0-4.243-.879-5.121C19.243 5 17.828 5 15 5H9c-2.828 0-4.243 0-5.121.879m2.676 2.289a1 1 0 0 0-1.11 1.664l5.446 3.63a2 2 0 0 0 2.218 0l5.446-3.63a1 1 0 0 0-1.11-1.664L12 11.798z" clip-rule="evenodd"/></svg>
@@ -34,26 +37,3 @@
         </div>
     </div>
 </footer>
-
-<style lang="scss">
-    footer {
-        padding: 40px 0;
-    }
-
-    img {
-        width: 80px;
-        height: 80px;
-    }
-
-    .div {
-        height: 1.5rem;
-        width: 2px;
-        background-color: var(--color-white);
-    }
-
-    .icon-container {
-        width: 2rem;
-        height: 2rem;
-    }
-
-</style>
