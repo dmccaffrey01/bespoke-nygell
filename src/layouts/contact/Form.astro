@@ -4,18 +4,18 @@ import '/src/styles/layouts/contact/form.scss';
 
 <section class="contact-form-section flex flex-center height-fill height-sm">
     <div class="sc flex flex-col flex-center gap-200">
-        <form class="flex flex-col align-start gap-200">
+        <form class="flex flex-col align-start gap-200" action="https://formsubmit.co/contact@bespokefloorsanding.ie" method="POST">
             <div class="form-group flex flex-col align-start gap-50 width-fill">
                 <labal class="text text-md text-secondary" for="id_name">Name</labal>
-                <input type="text" name="id_name" id="id_name" class="width-fill br-50 text text-md text-secondary" required>
+                <input type="text" name="name" id="name" class="width-fill br-50 text text-md text-secondary" required>
             </div>
             <div class="form-group flex flex-col align-start gap-50 width-fill">
                 <labal class="text text-md text-secondary" for="id_email">Email</labal>
-                <input type="email" name="id_email" id="id_email" class="width-fill br-50 text text-md text-secondary" required>
+                <input type="email" name="email" id="email" class="width-fill br-50 text text-md text-secondary" required>
             </div>
             <div class="form-group flex flex-col align-start gap-50 width-fill">
                 <labal class="text text-md text-secondary" for="id_message">Message</labal>
-                <textarea name="id_message" id="id_message" class="width-fill br-50 text text-md text-secondary" required></textarea>
+                <textarea name="message" id="message" class="width-fill br-50 text text-md text-secondary" required></textarea>
             </div>
             <button type="submit" class="contact-submit-btn btn btn-md btn-tertiary btn-outline text-md text-tertiary width-fill flex-center">Send Message</button>
         </form>
@@ -41,9 +41,9 @@ import '/src/styles/layouts/contact/form.scss';
         let contactSubmitBtn = document.querySelector(".contact-submit-btn");
 
         contactSubmitBtn?.addEventListener("click", (e) => {
-            e.preventDefault();
             navigator.clipboard.writeText("contact@bespokefloorsanding.ie");
-            alert("Something went wrong! Please send us your message to 'contact@bespokefloorsanding.ie' (We have copied it for you) Or alternatively give us a call - +353 87 402 7101");
+            alert("What's better - Give us a Call - +353 87 402 7101");
+            window.location.href = "tel:+353874027101";
         });
     });
 </script>
