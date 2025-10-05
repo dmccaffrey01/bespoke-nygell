@@ -12,7 +12,8 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
     "@tailwindcss/vite": "^4.0.9",
-    "astro": "^5.4.1"
+    "astro": "^5.4.1",
+    "vite-plugin-sass": "^0.1.0"
   },
   "devDependencies": {
     "gh-pages": "^6.3.0",
