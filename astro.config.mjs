@@ -5,5 +5,4 @@ export default defineConfig({
   site: 'https://bespokefloorsanding.ie',
   integrations: [sitemap()],
   output: 'static',
-  base: '/bespoke-nygell/', 
 });
